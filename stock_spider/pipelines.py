@@ -20,7 +20,7 @@ class StockPipeline(object):
 
     def save_to_file(self, item):
         try:
-            filename = ".\\test.txt"
+            filename = "test.txt"
             file = open(filename, mode='a+')
             # 判断文件是否非空
             if 0 == os.path.getsize(filename):
