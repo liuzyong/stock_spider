@@ -39,3 +39,5 @@ class StockSpider(scrapy.Spider):
         infors = response.xpath("//*[@id=\"ml_001\"]/table/tbody/tr[1]/td[2]/text()").extract()
         print(infors)
         return infors
+
+# response.xpath("//*[@id=\"price9\"]/data-bind").extract()
