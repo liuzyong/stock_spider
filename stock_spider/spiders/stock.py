@@ -59,6 +59,7 @@ class StockSpider(scrapy.Spider):
 
     def get_today_open(self, response):
         # //*[@id="gt1"]
+        # 在调试，目前获取不到
         today_open = response.xpath("///*[@id=\"gt1\"]").extract()
         print(today_open)
         return today_open
