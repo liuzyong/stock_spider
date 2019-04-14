@@ -16,5 +16,8 @@ class StockSpiderItem(scrapy.Item):
 class StockItem(scrapy.Item):
     # define the fields for your item here like:
     names = scrapy.Field()
-    infos = scrapy.Field()
+    code = scrapy.Field()
+    today_open = scrapy.Field()
+    yes_close = scrapy.Field()
+
     pass

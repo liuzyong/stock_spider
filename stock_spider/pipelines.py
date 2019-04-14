@@ -20,13 +20,13 @@ class StockPipeline(object):
 
     def save_to_file(self, item):
         try:
-            filename = "test.txt"
+            filename = "quote.txt"
             file = open(filename, mode='a+')
             # 判断文件是否非空
             if 0 == os.path.getsize(filename):
-                file.write("qqqqqq\n")
+                file.write("股票名称,股票代码,今开,昨收\n")
 
-            file.write(str(item) + "\n")
+            file.write(str(item["names"] + item["code"] + item["today_open"]) + "\n")
             file.flush()
             file.close()
         except():
