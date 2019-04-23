@@ -116,3 +116,4 @@ FEED_EXPORTERS = {
     'json':'stockstar.settings.CustomJsonLinesItemExporter',
 }
 DOWNLOAD_DELAY = 0.25
+FEED_EXPORT_ENCODING = 'utf-8'
