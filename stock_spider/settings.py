@@ -91,16 +91,28 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-SPLASH_URL = 'http://localhost:8050'
-ROBOTSTXT_OBEY = True
+# SPLASH_URL = 'http://localhost:8050'
+# ROBOTSTXT_OBEY = True
+#
+# DOWNLOADER_MIDDLEWARES = {
+#     'scrapy_splash.SplashCookiesMiddleware': 723,
+#     'scrapy_splash.SplashMiddleware': 725,
+#     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+# }
+# SPIDER_MIDDLEWARES = {
+#     'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+# }
+# DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+# HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
-DOWNLOADER_MIDDLEWARES = {
-    'scrapy_splash.SplashCookiesMiddleware': 723,
-    'scrapy_splash.SplashMiddleware': 725,
-    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+from scrapy.exporters import JsonItemExporter
+#默认显示的中文是阅读性较差的Unicode字符
+#需定义子类显示出原来的字符集（将父类的ensure——ascii属性设置为False即可）
+class CustomJsonLinesItemExporter(JsonItemExporter):
+    def __init__(self,file,**kwargs):
+        super(CustomJsonLinesItemExporter,self).__init__(file,ensure_ascii=False,**kwargs)
+#启用新定义的Exporter类
+FEED_EXPORTERS = {
+    'json':'stockstar.settings.CustomJsonLinesItemExporter',
 }
-SPIDER_MIDDLEWARES = {
-    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
-}
-DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
-HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
+DOWNLOAD_DELAY = 0.25

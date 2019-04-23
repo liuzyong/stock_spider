@@ -6,18 +6,37 @@
 # https://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from scrapy.loader import ItemLoader
+from scrapy.loader.processors import TakeFirst
+#
+# class StockSpiderItem(scrapy.Item):
+#     # define the fields for your item here like:
+#     # name = scrapy.Field()
+#     pass
+#
+# class StockItem(scrapy.Item):
+#     # define the fields for your item here like:
+#     names = scrapy.Field()
+#     code = scrapy.Field()
+#     today_open = scrapy.Field()
+#     yes_close = scrapy.Field()
+#
+#     pass
 
-
-class StockSpiderItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+class StockstarItemLoader(ItemLoader):
+    #自定义itemloader,用于存储爬虫所抓取的字段内容
+    default_output_processor = TakeFirst()
     pass
 
-class StockItem(scrapy.Item):
+class StockstarItem(scrapy.Item):
     # define the fields for your item here like:
-    names = scrapy.Field()
-    code = scrapy.Field()
-    today_open = scrapy.Field()
-    yes_close = scrapy.Field()
-
+    # name = scrapy.Field()
+    code = scrapy.Field()               #股票代码
+    abbr = scrapy.Field()               #股票简称
+    last_trade = scrapy.Field()         #最新价
+    chg_ratio = scrapy.Field()          #涨跌幅
+    chg_amt = scrapy.Field()            #涨跌额
+    chg_ratio_5min = scrapy.Field()     #5分钟涨幅
+    volumn = scrapy.Field()             #成交量
+    turn_over = scrapy.Field()          #成交额
     pass
