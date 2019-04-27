@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-from urllib import parse
 
 import scrapy
 
-from items import StockstarItem,StockstarItemLoader
+from stock_spider.items import StockstarItem, StockstarItemLoader
+
+
 # from stock_spider.items import StockItem
 
 
@@ -91,3 +92,10 @@ class StockSpider(scrapy.Spider):
     #     # today_open = response.xpath("///*[@id=\"price9\"]").extract()
     #     print(today_open)
     #     return today_open
+
+# //*[@id=\"datalist\"]/tr[1]/td[1]/a
+
+# //*[@id="divPageControl1"]/a[1]  //*[@id="divPageControl1"]/a[1]
+# response.xpath("///*[@id=\"divPageControl1\"]").extract()
+
+# //*[@id="divPageControl1"]/a[1]
